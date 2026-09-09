@@ -15,13 +15,13 @@ on: # zizmor: ignore[dangerous-triggers]
 
 jobs:
   review:
-    uses: docker/docker-agent-action/.github/workflows/review-pr.yml@774b6e0e60d6c648b0f2dc43bd5221377a0a7420 # v2.0.2
+    uses: docker/docker-agent-action/.github/workflows/review-pr.yml@bd672e0d95c61bb79e899f1ea71d44e19b12f91f # v2.0.7
     permissions:
       contents: read # Read repository files and PR diffs
       pull-requests: write # Post review comments
       issues: write # Create security incident issues if secrets detected
       checks: write # (Optional) Show review progress as a check run
       id-token: write # Required for OIDC authentication to AWS Secrets Manager
-      actions: read # Download artifacts from trigger workflow
+      actions: write # Download artifacts from trigger workflow
     with:
       trigger-run-id: ${{ github.event_name == 'workflow_run' && format('{0}', github.event.workflow_run.id) || '' }}
